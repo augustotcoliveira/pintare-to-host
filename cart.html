@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pintare - Lista de Orçamento</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        /* Regra para o Menu de Produtos (controlado por Hover) */
+        
+        .dropdown-content {
+            display: none;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+        }
+        
+        .group\/nested:hover .dropdown-nested {
+            display: block;
+        }
+        /* Regra para o Menu do Avatar (controlado por JS) */
+        
+        .avatar-dropdown-menu {
+            display: none;
+        }
+        
+        .avatar-dropdown-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-neutral-800 dark:text-neutral-200">
+    <div class="flex h-auto min-h-screen w-full flex-col">
+        <div id="header-placeholder"></div>
+
+        <main class="flex-grow">
+            <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <h2 class="text-4xl font-bold tracking-tight text-neutral-900 dark:text-neutral-100">Lista de Produtos para Orçamento</h2>
+                    <p class="mt-2 text-lg text-neutral-600 dark:text-neutral-400">Revise os itens e as quantidades antes de solicitar sua cotação.</p>
+                </div>
+                <main class="flex-grow">
+                    <div class="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+
+                        <div id="cart-empty-container" class="hidden">
+                            <div class="flex flex-col items-center gap-6 text-center">
+                                <div class="flex h-32 w-32 items-center justify-center rounded-full bg-background-light dark:bg-gray-800 shadow-inner">
+                                    <span class="material-symbols-outlined text-7xl text-gray-400 dark:text-gray-500">production_quantity_limits</span>
+                                </div>
+                                <div class="flex max-w-lg flex-col items-center gap-2">
+                                    <h1 class="text-3xl font-bold ...">Sua Lista de Orçamento está Vazia</h1>
+                                    <p class="text-base text-gray-600 ...">Parece que você ainda não adicionou nenhum produto.</p>
+                                </div>
+                                <a href="product_catalog.html" class="flex h-12 min-w-[84px] ...">
+                                    <span class="truncate">Explorar Catálogo de Produtos</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div id="cart-full-container">
+                            <div class="rounded-lg border ...">
+                                <div class="flow-root">
+                                    <ul id="cart-item-list" cclass="divide-y divide-neutral-200 dark:divide-neutral-700" role="list">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </main>
+                <div id="cart-full-container" class="rounded-lg border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-background-dark/50 shadow-sm">
+                    <div class="flow-root">
+                        <ul id="cart-item-list" class="divide-y divide-neutral-200 dark:divide-neutral-700" role="list">
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-8 flex flex-col-reverse items-center justify-between gap-4 sm:flex-row">
+                    <a class="flex items-center gap-2 text-sm font-semibold text-primary hover:underline" href="#">
+                        <span class="material-symbols-outlined">arrow_back</span> Continuar Navegando
+                    </a>
+                    <a id="btn-finalizar-orcamento" class="w-full sm:w-auto rounded-lg bg-primary px-8 py-3 text-center text-base font-bold text-white shadow-sm transition hover:bg-opacity-90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:focus:ring-offset-background-dark"
+                        href="#">
+              Solicitar Orçamento
+            </a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modal-placeholder"></div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/app.js"></script>
+
+    <script src="js/auth.js"></script>
+    <script src="js/cart-manager.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</body>
+
+</html>

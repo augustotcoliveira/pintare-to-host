@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Lista de Orçamento Vazia - Pintare Equipamentos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+
+        /* Estilo extra para garantir que o sub-menu não desapareça se o mouse passar rápido */
+
+        .dropdown-content {
+            display: none;
+        }
+
+        .group:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Nested Dropdown logic */
+
+        .group\/nested:hover .dropdown-nested {
+            display: block;
+        }
+
+        /* Para o menu do avatar, vamos usar JS para alternar 'hidden'/'block' */
+
+        .avatar-dropdown-menu {
+            display: none;
+        }
+
+        .avatar-dropdown-menu.active {
+            display: block;
+        }
+
+        header {
+        background-color: rgba(255, 255, 255, 0.8) !important; /* Branco com 80% de opacidade */
+    }
+
+    .dark header {
+        background-color: rgba(35, 24, 15, 0.8) !important; /* background-dark com 80% de opacidade */
+    }
+
+    header:hover {
+        background-color: rgba(255, 255, 255, 1) !important; /* Branco totalmente opaco no hover */
+    }
+
+    .dark header:hover {
+        background-color: rgba(35, 24, 15, 1) !important; /* background-dark totalmente opaco no hover */
+    }
+
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <!-- TopNavBar Component -->
+        <header
+            class="sticky top-0 z-50 w-full bg-white dark:bg-[#23180f] border-b border-neutral-200 dark:border-neutral-800 shadow-sm backdrop-blur-sm transition-all duration-300">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex h-20 items-center justify-between gap-4">
+
+                    <div class="flex items-center gap-8">
+                        <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                            <div class="text-primary size-8">
+                                <img src="https://cdn.sistemawbuy.com.br/arquivos/2c9361815cecd146294cb75587d9fe1d/config/pistolas-de-pintura,logo-sem-fundo-521.png"
+                                    alt="logo-pintare">
+                            </div>
+                            <h2
+                                class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white hidden sm:block">
+                                Pintare</h2>
+                        </a>
+
+                        <nav class="hidden xl:flex items-center gap-6">
+
+                            <div class="relative group h-20 flex items-center">
+                                <a href="product_catalog.html"
+                                    class="flex items-center gap-1 text-sm font-medium text-neutral-600 transition-colors hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none">
+                                    Produtos
+                                    <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                                    </button>
+
+                                    <div
+                                        class="dropdown-content absolute top-full left-0 w-64 bg-white dark:bg-neutral-900 shadow-xl rounded-b-lg border border-neutral-100 dark:border-neutral-800 py-2 z-50">
+
+                                        <a href="#"
+                                            class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Pistolas
+                                            de gravidade</a>
+
+                                        <div class="group/nested relative">
+                                            <button
+                                                class="w-full flex items-center justify-between px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">
+                                                <span>Pistolas de pressão</span>
+                                                <span class="material-symbols-outlined text-[16px]">chevron_right</span>
+                                            </button>
+
+                                            <div
+                                                class="dropdown-nested hidden absolute left-full top-0 w-56 bg-white dark:bg-neutral-900 shadow-xl rounded-lg border border-neutral-100 dark:border-neutral-800 py-2 -ml-1">
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Filtro
+                                                    de ar</a>
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Mangueiras</a>
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Peças
+                                                    de JGA</a>
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Peças
+                                                    de SGK/FLG</a>
+                                                <a href="#"
+                                                    class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Canecas</a>
+                                            </div>
+                                        </div>
+                                        <a href="#"
+                                            class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Pistolas
+                                            de sucção</a>
+                                        <a href="#"
+                                            class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Pistolas
+                                            automáticas</a>
+                                        <a href="#"
+                                            class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Tanques</a>
+                                        <a href="#"
+                                            class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Bombas</a>
+                                        <div class="border-t border-neutral-100 dark:border-neutral-800 my-1"></div>
+                                        <a href="#"
+                                            class="flex items-center justify-between px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">
+                                            Filtros <span
+                                                class="material-symbols-outlined text-[16px]">chevron_right</span>
+                                        </a>
+                                    </div>
+                            </div>
+
+                            <a class="text-sm font-medium text-neutral-600 transition-colors hover:text-primary dark:text-neutral-300 dark:hover:text-primary"
+                                href="about.html">Sobre Nós</a>
+                            <a class="text-sm font-medium text-neutral-600 transition-colors hover:text-primary dark:text-neutral-300 dark:hover:text-primary"
+                                href="contact.html">Contato</a>
+                        </nav>
+                    </div>
+
+                    <div class="hidden lg:flex flex-1 max-w-md mx-4">
+                        <div class="relative w-full group">
+                            <input type="text" placeholder="Pesquisar produtos..."
+                                class="w-full h-10 pl-4 pr-12 text-sm bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-neutral-400">
+                            <button
+                                class="absolute right-0 top-0 h-10 w-10 flex items-center justify-center bg-primary hover:bg-primary-dark text-white rounded-r-lg transition-colors">
+                                <span class="material-symbols-outlined text-[20px]">search</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-4 sm:gap-6">
+
+                        <a href="cart.html"
+                            class="relative group text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary transition-colors">
+                            <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                            <span
+                                class="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center rounded-full bg-primary text-[10px] font-bold text-white border-2 border-white dark:border-background-dark">0</span>
+                        </a>
+
+                        <div class="relative">
+                            <button onclick="openModal('login')" id="avatar-button"
+                                class="flex items-center justify-center size-10 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50">
+                                <span class="material-symbols-outlined text-2xl">person</span>
+                            </button>
+
+                            <div id="avatar-dropdown-menu"
+                                class="avatar-dropdown-menu absolute right-0 mt-3 w-48 bg-white dark:bg-neutral-900 shadow-xl rounded-lg border border-neutral-100 dark:border-neutral-800 py-2 z-50">
+                                <div id="not-authenticated-options">
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Login</a>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Cadastro</a>
+                                </div>
+
+                                <div id="authenticated-options" class="hidden">
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Minha
+                                        Conta</a>
+                                    <div class="border-t border-neutral-100 dark:border-neutral-800 my-1"></div>
+                                    <a href="#"
+                                        class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-neutral-800">Sair</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="hidden md:inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+                            Solicitar um orçamento
+                        </button>
+
+                        <button class="xl:hidden p-2 text-neutral-700 dark:text-neutral-300">
+                            <span class="material-symbols-outlined">menu</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="flex flex-1 items-center justify-center py-12 sm:py-24">
+            <div class="container mx-auto px-4">
+                <!-- EmptyState Component -->
+                <div class="flex flex-col items-center gap-6 text-center">
+                    <div
+                        class="flex h-32 w-32 items-center justify-center rounded-full bg-background-light dark:bg-gray-800 shadow-inner">
+                        <span
+                            class="material-symbols-outlined text-7xl text-gray-400 dark:text-gray-500">production_quantity_limits</span>
+                    </div>
+                    <div class="flex max-w-lg flex-col items-center gap-2">
+                        <h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl">Sua
+                            Lista de Orçamento está Vazia</h1>
+                        <p class="text-base text-gray-600 dark:text-gray-400">
+                            Parece que você ainda não adicionou nenhum produto. Navegue em nosso catálogo para encontrar
+                            o equipamento ideal para seu projeto.
+                        </p>
+                    </div>
+                    <button
+                        class="flex h-12 min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-6 text-base font-bold text-white shadow-lg shadow-primary/20 transition-transform duration-200 ease-in-out hover:scale-105">
+                        <span class="truncate">Explorar Catálogo de Produtos</span>
+                    </button>
+                    <!-- MetaText Component -->
+                    <a class="text-sm font-medium text-primary hover:underline" href="#">Ver Produtos em Destaque</a>
+                </div>
+            </div>
+        </main>
+        <!-- Footer Component -->
+        <footer
+            class="w-full border-t border-gray-200/50 dark:border-gray-700/50 bg-background-light dark:bg-background-dark">
+            <div class="container mx-auto flex flex-col gap-8 px-4 py-10 text-center">
+                <div
+                    class="grid grid-cols-2 gap-4 text-center sm:grid-cols-3 md:flex md:flex-wrap md:items-center md:justify-center md:gap-8">
+                    <a class="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
+                        href="#">Início</a>
+                    <a class="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
+                        href="#">Produtos</a>
+                    <a class="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
+                        href="#">Sobre Nós</a>
+                    <a class="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
+                        href="#">Contato</a>
+                    <a class="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
+                        href="#">Política de Privacidade</a>
+                    <a class="text-sm text-gray-600 hover:text-primary dark:text-gray-400 dark:hover:text-primary"
+                        href="#">Termos de Serviço</a>
+                </div>
+                <div class="flex justify-center gap-6">
+                    <a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary" href="#">
+                        <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+                            <path clip-rule="evenodd"
+                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                    <a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary" href="#">
+                        <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+                            <path
+                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z">
+                            </path>
+                        </svg>
+                    </a>
+                    <a class="text-gray-500 hover:text-primary dark:text-gray-400 dark:hover:text-primary" href="#">
+                        <svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24">
+                            <path clip-rule="evenodd"
+                                d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.345 2.525c.636-.247 1.363-.416 2.427-.465C9.793 2.013 10.147 2 12.315 2zm-1.002 6.363a4.952 4.952 0 11-3.536 3.536 4.952 4.952 0 013.536-3.536zm-4.498 4.952a3.54 3.54 0 107.08 0 3.54 3.54 0 00-7.08 0zm9.556-5.263a1.182 1.182 0 100 2.364 1.182 1.182 0 000-2.364z"
+                                fill-rule="evenodd"></path>
+                        </svg>
+                    </a>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">© 2024 Pintare Equipamentos Para Pintura LTDA. Todos
+                    os direitos reservados.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

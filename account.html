@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Minha Conta - Pintare</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "primary-dark": "#d66204", // Adicionei uma cor um pouco mais escura para hover
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        /* Estilo extra para garantir que o sub-menu não desapareça se o mouse passar rápido */
+        
+        .dropdown-content {
+            display: none;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+        }
+        /* Nested Dropdown logic */
+        
+        .group\/nested:hover .dropdown-nested {
+            display: block;
+        }
+        /* Para o menu do avatar, vamos usar JS para alternar 'hidden'/'block' */
+        
+        .avatar-dropdown-menu {
+            display: none;
+        }
+        
+        .avatar-dropdown-menu.active {
+            display: block;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+            /* Branco com 80% de opacidade */
+        }
+        
+        .dark header {
+            background-color: rgba(35, 24, 15, 0.8) !important;
+            /* background-dark com 80% de opacidade */
+        }
+        
+        header:hover {
+            background-color: rgba(255, 255, 255, 1) !important;
+            /* Branco totalmente opaco no hover */
+        }
+        
+        .dark header:hover {
+            background-color: rgba(35, 24, 15, 1) !important;
+            /* background-dark totalmente opaco no hover */
+        }
+        /* Estilos para esconder a scrollbar */
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <main class="container mx-auto flex-1 px-4 py-8 min-h-[calc(100vh-300px)]">
+        <!-- PageHeading -->
+        <div class="mb-8">
+            <p class="text-4xl font-black leading-tight tracking-[-0.033em]">Minha Conta</p>
+        </div>
+        <div class="flex flex-col gap-8 md:flex-row">
+            <!-- SideNavBar -->
+            <aside class="w-full md:w-64">
+                <div class="flex flex-col justify-between rounded-lg border border-border-light dark:border-border-dark p-4">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center gap-3">
+                            <!-- Avatar do Usuário -->
+                            <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-12 bg-primary/20 flex items-center justify-center text-primary">
+                                <span class="material-symbols-outlined text-3xl">person</span>
+                            </div>
+                            <div class="flex flex-col">
+                                <h1 id="sidebar-name" class="text-base font-medium leading-normal">Carregando...</h1>
+                                <p id="sidebar-email" class="text-sm font-normal leading-normal text-muted-light dark:text-muted-dark">
+                                    ...</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-2 pt-4">
+                            <a class="flex items-center gap-3 rounded-lg px-3 py-2 bg-primary/20 dark:bg-primary/20 text-primary" href="#">
+                                <span class="material-symbols-outlined text-2xl">person</span>
+                                <p class="text-sm font-medium leading-normal">Perfil</p>
+                            </a>
+                            <!-- Links futuros (não funcionais por enquanto) -->
+                            <a class="flex items-center gap-3 rounded-lg px-3 py-2 hover:bg-subtle-light dark:hover:bg-subtle-dark opacity-50 cursor-not-allowed" href="#">
+                                <span class="material-symbols-outlined text-2xl">receipt_long</span>
+                                <p class="text-sm font-medium leading-normal">Histórico (Em breve)</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <div class="flex-1">
+                <div class="rounded-lg border border-border-light dark:border-border-dark p-6 relative">
+                    <!-- SectionHeader with Edit Button -->
+                    <div class="flex items-center justify-between border-b border-border-light dark:border-border-dark pb-4 mb-4">
+                        <h2 class="text-[22px] font-bold leading-tight tracking-[-0.015em]">Informações de Perfil</h2>
+
+                        <button id="btn-editar-perfil" onclick="AccountManager.toggleEditMode()" class="flex items-center justify-center rounded-lg h-10 bg-primary text-white gap-2 text-sm font-bold px-4 hover:opacity-90 transition-all">
+                            <span class="material-symbols-outlined text-lg">edit</span>
+                            <span id="btn-text">Editar</span>
+                        </button>
+                    </div>
+
+                    <!-- DescriptionList -->
+                    <form id="profile-form" onsubmit="return false;">
+                        <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-[160px_1fr]">
+
+                            <!-- Nome / Razão Social -->
+                            <div class="col-span-1 sm:col-span-2 grid grid-cols-subgrid border-b border-border-light dark:border-border-dark py-5">
+                                <p id="label-nome" class="text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Nome Completo</p>
+                                <div class="text-sm font-normal leading-normal">
+                                    <span id="display-nome" class="editable-display">...</span>
+                                    <input id="input-nome" name="nome_completo" type="text" class="editable-input hidden w-full rounded border border-neutral-300 bg-transparent p-2" />
+                                </div>
+                            </div>
+
+                            <!-- Documento (CPF / CNPJ) - Não editável -->
+                            <div class="col-span-1 sm:col-span-2 grid grid-cols-subgrid border-b border-border-light dark:border-border-dark py-5">
+                                <p id="label-doc" class="text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Documento</p>
+                                <p id="display-doc" class="text-sm font-normal leading-normal text-gray-500">...</p>
+                            </div>
+
+                            <!-- E-mail - Não editável facilmente -->
+                            <div class="col-span-1 sm:col-span-2 grid grid-cols-subgrid border-b border-border-light dark:border-border-dark py-5">
+                                <p class="text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">E-mail</p>
+                                <p id="display-email" class="text-sm font-normal leading-normal text-gray-500">...</p>
+                            </div>
+
+                            <!-- Celular -->
+                            <div class="col-span-1 sm:col-span-2 grid grid-cols-subgrid border-b border-border-light dark:border-border-dark py-5">
+                                <p class="text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Celular</p>
+                                <div class="text-sm font-normal leading-normal">
+                                    <span id="display-celular" class="editable-display">...</span>
+                                    <input id="input-celular" name="celular" type="text" class="editable-input hidden w-full rounded border border-neutral-300 bg-transparent p-2" />
+                                </div>
+                            </div>
+
+                            <!-- Telefone -->
+                            <div class="col-span-1 sm:col-span-2 grid grid-cols-subgrid pt-5">
+                                <p class="text-muted-light dark:text-muted-dark text-sm font-normal leading-normal">Telefone</p>
+                                <div class="text-sm font-normal leading-normal">
+                                    <span id="display-telefone" class="editable-display">...</span>
+                                    <input id="input-telefone" name="telefone" type="text" class="editable-input hidden w-full rounded border border-neutral-300 bg-transparent p-2" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+    <div id="modal-placeholder"></div>
+
+    <!-- Scripts -->
+    <script>
+        const API_URL = 'http://localhost:3000/api';
+    </script>
+    <script src="js/cart-manager.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+
+    <!-- Script Específico desta página -->
+    <script src="js/account.js"></script>
+</body>
+
+</html>

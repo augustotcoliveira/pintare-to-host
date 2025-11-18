@@ -1,0 +1,81 @@
+<header class="sticky top-0 z-50 w-full bg-white dark:bg-[#23180f] border-b border-neutral-200 dark:border-neutral-800 shadow-sm backdrop-blur-sm transition-all duration-300">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-20 items-center justify-between gap-4">
+
+            <div class="flex items-center gap-8">
+                <a href="index.html" class="flex items-center gap-2 flex-shrink-0">
+                    <div class="text-primary size-8">
+                        <img src="https://cdn.sistemawbuy.com.br/arquivos/2c9361815cecd146294cb75587d9fe1d/config/pistolas-de-pintura,logo-sem-fundo-521.png" alt="logo-pintare">
+                    </div>
+                    <h2 class="text-xl font-bold tracking-tight text-neutral-900 dark:text-white hidden sm:block">
+                        Pintare</h2>
+                </a>
+
+                <nav class="hidden xl:flex items-center gap-6">
+                    <a class="text-sm font-medium text-neutral-600 transition-colors hover:text-primary dark:text-neutral-300 dark:hover:text-primary" href="about.html">Sobre Nós</a>
+
+                    <!-- Menu de Produtos Dinâmico -->
+                    <div class="relative group h-20 flex items-center">
+                        <a href="product_catalog.html" class="flex items-center gap-1 text-sm font-medium text-neutral-600 transition-colors hover:text-primary dark:text-neutral-300 dark:hover:text-primary focus:outline-none">
+                            Produtos
+                            <span class="material-symbols-outlined text-[20px]">expand_more</span>
+                        </a>
+                        <!-- BUG CORRIGIDO: Era </button> -->
+
+                        <!-- Container do Dropdown Dinâmico -->
+                        <div id="product-menu-dropdown" class="dropdown-content absolute top-full left-0 w-64 bg-white dark:bg-neutral-900 shadow-xl rounded-b-lg border border-neutral-100 dark:border-neutral-800 py-2 z-50">
+                            <!-- O JavaScript vai preencher aqui -->
+                            <span class="block px-4 py-2 text-sm text-neutral-400">Carregando...</span>
+                        </div>
+                    </div>
+
+                    <a class="text-sm font-medium text-neutral-600 transition-colors hover:text-primary dark:text-neutral-300 dark:hover:text-primary" href="contact.html">Contato</a>
+                </nav>
+            </div>
+
+            <form id="search-form" class="hidden lg:flex flex-1 max-w-md mx-4">
+                <div class="relative w-full group">
+                    <input type="text" id="search-input" placeholder="Pesquisar produtos..." class="w-full h-10 pl-4 pr-12 text-sm bg-white dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-700 rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all placeholder:text-neutral-400">
+                    <button id="search-button" type="submit" class="absolute right-0 top-0 h-10 w-10 flex items-center justify-center bg-primary hover:bg-primary-dark text-white rounded-r-lg transition-colors">
+                        <span class="material-symbols-outlined text-[20px]">search</span>
+                    </button>
+                </div>
+            </form>
+
+            <div class="flex items-center gap-4 sm:gap-6">
+                <!-- Ícone do Carrinho (ID já existe) -->
+                <a href="cart.html" class="relative group text-neutral-600 hover:text-primary dark:text-neutral-300 dark:hover:text-primary transition-colors">
+                    <span class="material-symbols-outlined text-2xl">shopping_cart</span>
+                    <span id="cart-count" class="absolute -top-1 -right-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs font-bold text-white hidden">0</span>
+                </a>
+
+                <!-- Botão do Avatar (IDs já existem) -->
+                <div class="relative">
+                    <button id="avatar-button" class="flex items-center justify-center size-10 rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-700 dark:text-neutral-300 hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50">
+                        <span class="material-symbols-outlined text-2xl">person</span>
+                    </button>
+
+                    <div id="avatar-dropdown-menu" class="avatar-dropdown-menu absolute right-0 mt-3 w-48 bg-white dark:bg-neutral-900 shadow-xl rounded-lg border border-neutral-100 dark:border-neutral-800 py-2 z-50">
+                        <div id="not-authenticated-options">
+                            <a href="#" class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Login</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Cadastro</a>
+                        </div>
+                        <div id="authenticated-options" class="hidden">
+                            <a href="account.html" class="block px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50 hover:text-primary dark:text-neutral-300 dark:hover:bg-neutral-800">Minha Conta</a>
+                            <div class="border-t border-neutral-100 dark:border-neutral-800 my-1"></div>
+                            <a href="#" id="logout-button" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50 dark:text-red-400 dark:hover:bg-neutral-800">Sair</a>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="btn-solicitar-orcamento" class="hidden md:inline-flex h-10 items-center justify-center rounded-lg bg-primary px-5 text-sm font-bold text-white shadow-sm transition-all hover:bg-primary-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50">
+                    Fale conosco!
+                </button>
+
+                <button class="xl:hidden p-2 text-neutral-700 dark:text-neutral-300">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>

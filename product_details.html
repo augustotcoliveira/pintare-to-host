@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pintare Product Page</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        /* Regra para o Menu de Produtos (controlado por Hover) */
+        
+        .dropdown-content {
+            display: none;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+        }
+        
+        .group\/nested:hover .dropdown-nested {
+            display: block;
+        }
+        /* Regra para o Menu do Avatar (controlado por JS) */
+        
+        .avatar-dropdown-menu {
+            display: none;
+        }
+        
+        .avatar-dropdown-menu.active {
+            display: block;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        };
+    </script>
+
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+    <div class="flex min-h-screen flex-col">
+
+        <div id="header-placeholder"></div>
+
+        <main id="product-main-container" class="mx-auto w-full max-w-7xl flex-grow p-4 sm:p-6 lg:p-8">
+            <div class="flex flex-col lg:flex-row lg:gap-12">
+                <div class="lg:w-3/5">
+                    <nav class="mb-4 text-sm font-medium text-gray-500 dark:text-gray-400">
+                        <a class="hover:text-primary" href="product_catalog.html">Produtos</a>
+                        <span class="mx-2">/</span>
+                        <span id="breadcrumb-category" class="text-gray-800 dark:text-gray-200">Industrial Painting Equipment</span>
+                    </nav>
+                    <h2 id="product-name" class="mb-6 text-4xl font-bold tracking-tight text-gray-900 dark:text-white">Industrial Airless Paint Sprayer</h2>
+                    <div class="grid grid-cols-3 grid-rows-2 gap-2 mb-8 aspect-[4/3] @container">
+                        <div class="mb-8 aspect-[4/3] @container">
+                            <div id="product-gallery-main" class="w-full h-[75%] mb-2">
+                                <div class="w-full h-full bg-gray-200 rounded-lg animate-pulse"></div>
+                            </div>
+                            <div id="product-gallery-thumbnails" class="w-full h-[25%] grid grid-cols-4 gap-2">
+                                <div class="w-full h-full bg-gray-200 rounded-lg animate-pulse"></div>
+                                <div class="w-full h-full bg-gray-200 rounded-lg animate-pulse"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Descrição</h3>
+                            <div id="product-description-container" class="text-gray-600 dark:text-gray-300 space-y-4">
+                                <p class="animate-pulse">Carregando descrição...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-2/5 mt-12 lg:mt-0">
+                    <div id="quote-form-container" class="sticky top-24 rounded-xl bg-gray-50/50 dark:bg-gray-800/20 p-6 shadow-sm ring-1 ring-gray-200/50 dark:ring-gray-700/50">
+                        <h3 class="text-2xl font-bold mb-6 text-gray-900 dark:text-white animate-pulse">Carregando...</h3>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+        <div id="modal-placeholder"></div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+
+
+    <script src="js/app.js"></script>
+
+
+    <script src="js/cart-manager.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart-manager.js"></script>
+    <script src="js/product-details.js"></script>
+    <script src="js/main.js"></script>
+
+</body>
+
+</html>

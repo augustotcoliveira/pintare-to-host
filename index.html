@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pintare Equipamentos</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "primary-dark": "#d66204", // Adicionei uma cor um pouco mais escura para hover
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        /* Estilo extra para garantir que o sub-menu não desapareça se o mouse passar rápido */
+        
+        .dropdown-content {
+            display: none;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+        }
+        /* Nested Dropdown logic */
+        
+        .group\/nested:hover .dropdown-nested {
+            display: block;
+        }
+        /* Para o menu do avatar, vamos usar JS para alternar 'hidden'/'block' */
+        
+        .avatar-dropdown-menu {
+            display: none;
+        }
+        
+        .avatar-dropdown-menu.active {
+            display: block;
+        }
+        
+        header {
+            background-color: rgba(255, 255, 255, 0.8) !important;
+            /* Branco com 80% de opacidade */
+        }
+        
+        .dark header {
+            background-color: rgba(35, 24, 15, 0.8) !important;
+            /* background-dark com 80% de opacidade */
+        }
+        
+        header:hover {
+            background-color: rgba(255, 255, 255, 1) !important;
+            /* Branco totalmente opaco no hover */
+        }
+        
+        .dark header:hover {
+            background-color: rgba(35, 24, 15, 1) !important;
+            /* background-dark totalmente opaco no hover */
+        }
+        /* Estilos para esconder a scrollbar */
+        
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-neutral-800 dark:text-neutral-200">
+    <div class="relative flex min-h-screen w-full flex-col">
+        <div id="header-placeholder"></div>
+
+        <main class="flex-1">
+            <section class="relative h-[640px] w-full">
+                <div class="absolute inset-0 bg-cover bg-center" style='background-image: url("./src/img/fundo_pagina_inicial.png");'>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-black/10"></div>
+                <div class="relative z-10 flex h-full items-center justify-center text-center">
+                    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+                        <div class="flex flex-col items-center gap-6">
+                            <h1 class="text-4xl font-extrabold tracking-tighter text-white sm:text-5xl md:text-6xl">
+                                Seu parceiro em solução de pintura industrial
+                            </h1>
+                            <p class="max-w-2xl text-lg text-neutral-200">
+                                Pintare Equipamentos Para Pintura LTDA oferece equipamentosindustriais de alta qualidade, preços competitivos, atendimento excepcional e entrega para todo o país. Explore nosso catálogo e solicite um orçamento hoje mesmo.
+                            </p>
+                            <div class="flex flex-wrap justify-center gap-4">
+                                <a class="inline-flex h-12 items-center justify-center rounded-lg bg-primary px-8 text-base font-semibold text-white shadow-lg transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50" href="product_catalog.html">
+                                    Ver produtos
+                                </a>
+                                <a class="inline-flex h-12 items-center justify-center rounded-lg bg-background-light/90 px-8 text-base font-semibold text-neutral-800 shadow-lg transition-transform hover:scale-105 dark:bg-background-dark/90 dark:text-neutral-200" href="contact.html">
+                                    Nosso Contato
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 sm:py-24 bg-background-light dark:bg-background-dark">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                            Produtos Mais Vendidos
+                        </h2>
+                        <a class="text-sm font-medium text-primary hover:text-primary/80 dark:text-primary dark:hover:text-primary/80" href="product_catalog.html">Ver Tudo</a>
+                    </div>
+                    <div class="relative">
+                        <div class="flex items-center justify-center">
+                            <div class="overflow-hidden w-full">
+                                <div id="container-mais-vendidos" class="flex -mx-4 overflow-x-auto pb-4 scroll-smooth snap-x no-scrollbar">
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="scrollCarousel('container-mais-vendidos', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-neutral-900/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-neutral-900 ml-2">
+                            <span
+                                class="material-symbols-outlined text-neutral-800 dark:text-neutral-200">chevron_left</span>
+                        </button>
+                        <button onclick="scrollCarousel('container-mais-vendidos', 'right')" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-neutral-900/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-neutral-900 mr-2">
+                            <span
+                                class="material-symbols-outlined text-neutral-800 dark:text-neutral-200">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 sm:py-24 bg-background-light dark:bg-background-dark">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                            Alta Produtividade
+                        </h2>
+                        <a class="text-sm font-medium text-primary hover:text-primary/80 dark:text-primary dark:hover:text-primary/80" href="product_catalog.html">Ver Tudo</a>
+                    </div>
+
+                    <div class="relative">
+                        <div class="flex items-center justify-center">
+                            <div class="overflow-hidden w-full">
+                                <div id="container-alta-produtividade" class="flex -mx-4 overflow-x-auto pb-4 scroll-smooth snap-x no-scrollbar">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="scrollCarousel('container-alta-produtividade', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-neutral-900/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-neutral-900 ml-2">
+                            <span
+                                class="material-symbols-outlined text-neutral-800 dark:text-neutral-200">chevron_left</span>
+                        </button>
+                        <button onclick="scrollCarousel('container-alta-produtividade', 'right')" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-neutral-900/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-neutral-900 mr-2">
+                            <span
+                                class="material-symbols-outlined text-neutral-800 dark:text-neutral-200">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="py-16 sm:py-24 bg-background-light dark:bg-background-dark">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex items-center justify-between mb-8">
+                        <h2 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                            Alto Volume e Pouca Pressão
+                        </h2>
+                        <a class="text-sm font-medium text-primary hover:text-primary/80 dark:text-primary dark:hover:text-primary/80" href="product_catalog.html">Ver Tudo</a>
+                    </div>
+
+                    <div class="relative">
+                        <div class="flex items-center justify-center">
+                            <div class="overflow-hidden w-full">
+                                <div id="container-hvlp" class="flex -mx-4 overflow-x-auto pb-4 scroll-smooth snap-x no-scrollbar">
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="scrollCarousel('container-hvlp', 'left')" class="absolute left-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-neutral-900/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-neutral-900 ml-2">
+                            <span
+                                class="material-symbols-outlined text-neutral-800 dark:text-neutral-200">chevron_left</span>
+                        </button>
+                        <button onclick="scrollCarousel('container-hvlp', 'right')" class="absolute right-0 top-1/2 -translate-y-1/2 bg-white/80 dark:bg-neutral-900/80 rounded-full p-2 shadow-md hover:bg-white dark:hover:bg-neutral-900 mr-2">
+                            <span
+                                class="material-symbols-outlined text-neutral-800 dark:text-neutral-200">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+            <section class="py-16 sm:py-24">
+                <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="max-w-3xl mx-auto text-center mb-12">
+                        <h2 class="text-3xl font-bold tracking-tight text-neutral-900 dark:text-white sm:text-4xl">
+                            Porque Escolher a Pintare?
+                        </h2>
+                        <p class="mt-4 text-lg text-neutral-600 dark:text-neutral-400">
+                            Nosso compromisso é fornecer as melhores soluções para suas necessidades de pintura industrial.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                        <div class="flex flex-col gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-background-light p-6 transition-all hover:shadow-lg dark:bg-background-dark">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined text-3xl">local_shipping</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-neutral-900 dark:text-white">Entrega em Todo o Brasil
+                            </h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">"Entrega rápida e confiável em todo o território nacional.</p>
+                        </div>
+                        <div class="flex flex-col gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-background-light p-6 transition-all hover:shadow-lg dark:bg-background-dark">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined text-3xl">construction</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-neutral-900 dark:text-white">Atendimento Especializado
+                            </h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Nossa equipe de especialistas oferece suporte e atendimento excepcionais.
+                            </p>
+                        </div>
+                        <div class="flex flex-col gap-4 rounded-xl border border-neutral-200 dark:border-neutral-800 bg-background-light p-6 transition-all hover:shadow-lg dark:bg-background-dark">
+                            <div class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                                <span class="material-symbols-outlined text-3xl">payments</span>
+                            </div>
+                            <h3 class="text-xl font-semibold text-neutral-900 dark:text-white">Preços Competitivos</h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Obtenha o melhor custo-benefício para seu investimento com nossos preços.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <div id="modal-placeholder"></div>
+
+        <div id="footer-placeholder"></div>
+    </div>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+
+    <script src="js/cart-manager.js"></script>
+
+    <script src="js/main.js"></script>
+
+
+</body>
+
+</html>

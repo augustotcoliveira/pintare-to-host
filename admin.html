@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Painel Admin - Pintare</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f"
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-neutral-800 dark:text-neutral-200">
+    <header class="sticky top-0 z-20 w-full bg-white dark:bg-black/50 backdrop-blur-sm border-b dark:border-neutral-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex h-20 items-center justify-between">
+                <h1 class="text-2xl font-bold text-neutral-900 dark:text-white">Painel Administrativo</h1>
+                <a href="index.html" class="text-sm font-medium text-primary hover:underline">Voltar ao Site</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto p-4 sm:p-6 lg:p-8">
+
+        <section class="mb-8 p-6 bg-white dark:bg-neutral-900 rounded-lg shadow border dark:border-neutral-800">
+            <h2 id="form-titulo" class="text-2xl font-bold mb-4">Adicionar Novo Produto</h2>
+            <form id="form-produto" class="space-y-4">
+                <input type="hidden" id="produto-id" name="id">
+
+                <div>
+                    <div>
+                        <label for="produto-nome" class="block text-sm font-medium">Nome *</label>
+                        <input type="text" id="produto-nome" name="nome" required class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                    </div>
+                </div>
+                <div>
+                    <label for="produto-descricao-curta" class="block text-sm font-medium">Descrição Curta (para cards)</label>
+                    <input type="text" id="produto-descricao-curta" name="descricao_curta" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                </div>
+                <div>
+                    <label for="produto-descricao-longa" class="block text-sm font-medium">Descrição Longa (para detalhes)</label>
+                    <textarea id="produto-descricao-longa" name="descricao_longa" rows="3" class="form-textarea mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700"></textarea>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-2 p-4 border dark:border-neutral-700 rounded-lg">
+                        <label class="block text-sm font-medium">Imagens (limite 4)</label>
+                        <input type="text" id="produto-imagem-1" name="imagem-1" placeholder="Imagem Principal (URL)" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                        <input type="text" id="produto-imagem-2" name="imagem-2" placeholder="Imagem 2 (URL)" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                        <input type="text" id="produto-imagem-3" name="imagem-3" placeholder="Imagem 3 (URL)" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                        <input type="text" id="produto-imagem-4" name="imagem-4" placeholder="Imagem 4 (URL)" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                    </div>
+                    <div>
+                        <label for="produto-categoria" class="block text-sm font-medium">Categoria</label>
+                        <input type="text" id="produto-categoria" name="categoria" placeholder="ex: pistola, tanque" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                    </div>
+                </div>
+                <div>
+                    <label for="produto-tags" class="block text-sm font-medium">Tags (separadas por vírgula)</label>
+                    <input type="text" id="produto-tags" name="tags" placeholder="ex: mais_vendido, hvlp, lancamento" class="form-input mt-1 block w-full rounded dark:bg-neutral-800 dark:border-neutral-700">
+                </div>
+
+                <div class="flex items-center space-x-4 pt-4">
+                    <button type="submit" class="w-full justify-center py-2 px-4 rounded-lg text-white bg-primary hover:bg-primary/90">
+                        Salvar Produto
+                    </button>
+                    <button type="reset" onclick="limparFormulario()" class="w-full justify-center py-2 px-4 rounded-lg text-neutral-700 bg-neutral-200 dark:bg-neutral-700 dark:text-neutral-200 hover:bg-neutral-300">
+                        Cancelar Edição
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <section class="bg-white dark:bg-neutral-900 rounded-lg shadow border dark:border-neutral-800 overflow-hidden">
+            <h2 class="text-2xl font-bold p-6">Produtos Cadastrados</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full min-w-max text-left">
+                    <thead class="border-b dark:border-neutral-700 bg-neutral-50 dark:bg-neutral-800">
+                        <tr>
+                            <th class="p-4">Nome</th>
+                            <th class="p-4">Tags</th>
+                            <th class="p-4">Categoria</th>
+                            <th class="p-4">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-produtos-corpo">
+                        <tr>
+                            <td colspan="4" class="p-8 text-center text-neutral-500">Carregando produtos...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

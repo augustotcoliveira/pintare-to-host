@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link as="style" href="https://fonts.googleapis.com/css2?display=swap&family=Work+Sans%3Awght%40400%3B500%3B600%3B700&family=Noto+Sans%3Awght%40400%3B500%3B700%3B900" onload="this.rel='stylesheet'" rel="stylesheet" />
+    <title>Pintare - Produtos</title>
+    <link href="data:image/x-icon;base64," rel="icon" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f97306",
+                        "primary-dark": "#d66204",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23180f",
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24
+        }
+        /* Menu Produtos */
+        
+        .dropdown-content {
+            display: none;
+        }
+        
+        .group:hover .dropdown-content {
+            display: block;
+        }
+        /* Sub-menu lateral */
+        
+        .group\/nested:hover .dropdown-nested {
+            display: block;
+        }
+        /* Menu Avatar (controlado por JS) */
+        
+        .avatar-dropdown-menu {
+            display: none;
+        }
+        
+        .avatar-dropdown-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark font-display text-zinc-800 dark:text-zinc-200">
+    <div class="flex min-h-screen flex-col">
+
+        <div id="header-placeholder"></div>
+
+        <main class="flex-grow">
+            <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+                <div class="mb-8">
+                    <nav aria-label="Breadcrumb">
+                        <ol class="flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400">
+                            <li><a class="hover:underline" href="#">Produtos</a></li>
+                            <!--  <li><span class="material-symbols-outlined text-base">chevron_right</span></li>
+                           <li class="font-medium text-zinc-700 dark:text-zinc-200">Filtros</li> -->
+                        </ol>
+                    </nav>
+                </div>
+                <div class="flex flex-col gap-12 lg:flex-row">
+                    <aside id="filter-sidebar" class="w-full lg:w-1/4 lg:pr-8">
+                        <div class="sticky top-28 space-y-8">
+                            <div class="space-y-4">
+                                <h3 class="text-lg font-semibold text-zinc-900 dark:text-white">Filtrar por</h3>
+                                <div class="space-y-3 border-t border-zinc-200 pt-4 dark:border-zinc-700">
+                                    <h4 class="font-medium">Categorias</h4>
+                                    <div id="container-filtros-categoria" class="space-y-2">
+                                    </div>
+                                </div>
+                                <div class="space-y-3 border-t border-zinc-200 pt-4 dark:border-zinc-700">
+                                    <h4 class="font-medium">Tags</h4>
+                                    <div id="container-filtros-tag" class="space-y-2">
+                                    </div>
+                                </div>
+
+                            </div>
+                            <button id="btn-limpar-filtros" class="w-full rounded-md bg-zinc-200 px-4 py-2 text-sm font-semibold text-zinc-700 hover:bg-zinc-300 dark:bg-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-600">Limpar
+                                Filtros</button>
+                        </div>
+                    </aside>
+                    <div class="w-full lg:w-3/4">
+                        <div id="product-grid" class="grid grid-cols-1 gap-8 sm:grid-cols-2 xl:grid-cols-3">
+
+                        </div>
+                        <nav id="pagination-container" aria-label="Paginação" class="mt-12 flex justify-center">
+                            <ul id="pagination-controls" class="flex items-center -space-x-px h-10 text-base">
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div id="modal-placeholder"></div>
+
+        <div id="footer-placeholder"></div>
+        <script src="js/app.js"></script>
+        <script src="js/auth.js"></script>
+
+
+        <script src="js/cart-manager.js"></script>
+        <script src="js/catalog.js"></script>
+        <script src="js/main.js"></script>
+</body>
+
+</html>
